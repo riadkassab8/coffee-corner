@@ -196,20 +196,22 @@ body {
   border-radius: 7px;
   margin-top: 5px;
   border: none;
-  background: #e74d3c33;
-  color: #e74c3c;
+  background: #e0c097;
+  color: #000;
 }
 
 /* ticker (fixed bottom) -- fixed syntax for borders */
 .custom-ticker-wrap {
-  background: #e3c7c4;
+  background: #e0c097;
   overflow: hidden;
-  height: 45px;
+  height: auto;
   color: #000;
-  border-top: 2px solid #af8681;
-  border-bottom: 2px solid #af8681;
+  border-top: 2px solid #e0c097;
+  border-bottom: 1px solid #000;
   z-index: 10;
   direction: rtl;
+  border-radius: 5px;
+
 }
 
 .custom-ticker {
@@ -259,14 +261,26 @@ body {
   border-radius: 9px;
   justify-content: center;
   padding: 6px;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .catbar {
   display: flex;
   gap: 8px;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
   padding: 6px;
   border-radius: 12px;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE/Edge */
+}
+
+.catbar::-webkit-scrollbar {
+  display: none;
+  /* Chrome/Safari */
 }
 
 .catbtn {
@@ -279,12 +293,21 @@ body {
   font-weight: 700;
   cursor: pointer;
   white-space: nowrap;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1);
+}
+
+.catbtn:hover {
+  background: rgba(139, 69, 19, 0.1);
+  transform: scale(1.05);
 }
 
 .catbtn.active {
   background: var(--accent-2);
   color: #fff;
-  font-size: 18px;
+  font-size: 13px;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
 }
 
 /* sections */
@@ -1692,4 +1715,79 @@ l to Top Button */
     height: 45px;
     font-size: 18px;
   }
+}
+
+
+/* Fade Up Animation for Category Sections */
+.section[data-section] {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section[data-section].fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section title animation */
+.section[data-section] .sec-title {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section[data-section].fade-in .sec-title {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.05s;
+}
+
+/* Stagger animation for menu items within sections */
+.section[data-section] .item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.section[data-section].fade-in .item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section[data-section].fade-in .item:nth-child(2) {
+  transition-delay: 0.1s;
+}
+
+.section[data-section].fade-in .item:nth-child(3) {
+  transition-delay: 0.15s;
+}
+
+.section[data-section].fade-in .item:nth-child(4) {
+  transition-delay: 0.2s;
+}
+
+.section[data-section].fade-in .item:nth-child(5) {
+  transition-delay: 0.25s;
+}
+
+.section[data-section].fade-in .item:nth-child(6) {
+  transition-delay: 0.3s;
+}
+
+.section[data-section].fade-in .item:nth-child(7) {
+  transition-delay: 0.35s;
+}
+
+.section[data-section].fade-in .item:nth-child(8) {
+  transition-delay: 0.4s;
+}
+
+.section[data-section].fade-in .item:nth-child(9) {
+  transition-delay: 0.45s;
+}
+
+.section[data-section].fade-in .item:nth-child(10) {
+  transition-delay: 0.5s;
 }

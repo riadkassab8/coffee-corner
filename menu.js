@@ -1106,3 +1106,103 @@ function shareVia(platform) {
     }
   }, 3000);
 });
+
+// Smooth Category Scroll Spy
+(function () {
+  const catButtons = document.querySelectorAll('.catbtn');
+  const sections = document.querySelectorAll('[data-section]');
+
+  if (!catButtons.length || !sections.length) return;
+
+  let isScrolling = false;
+  let scrollTimeout;
+
+  // Update active category based on scroll position
+  function updateActiveCategory() {
+    if (isScrolling) return; // Don't update during manual scroll
+
+    const scrollPos = window.scrollY + 150; // Offset for sticky header
+
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      const sectionBottom = sectionTop + section.offsetHeight;
+      const sectionId = section.dataset.section;
+
+      if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+        catButtons.forEach(btn => {
+          if (btn.dataset.cat === sectionId) {
+            if (!btn.classList.contains('active')) {
+              catButtons.forEach(b => b.classList.remove('active'));
+              btn.classList.add('active');
+
+              // Smooth scroll the category button into view
+              btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+          }
+        });
+      }
+    });
+  }
+
+  // Handle manual category clicks
+  catButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      isScrolling = true;
+      clearTimeout(scrollTimeout);
+
+      // Reset after scroll completes
+      scrollTimeout = setTimeout(() => {
+        isScrolling = false;
+      }, 1000);
+    });
+  });
+
+  // Throttle scroll events for performance
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        updateActiveCategory();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  // Initial check
+  updateActiveCategory();
+})();
+
+// Fade Up Animation on Scroll for Categories
+(function () {
+  // Wait for sections to be rendered
+  setTimeout(() => {
+    const sections = document.querySelectorAll('.section[data-section]');
+
+    if (!sections.length) {
+      console.log('No sections found for fade animation');
+      return;
+    }
+
+    console.log(`Found ${sections.length} sections for fade animation`);
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -50px 0px',
+      threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          console.log('Section faded in:', entry.target.dataset.section);
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  }, 1000);
+})();
