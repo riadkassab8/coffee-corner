@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
       { id: "tea", title: "شاي ومشروبات ساخنة" },
       { id: "juice", title: "عصائر طبيعية" },
       { id: "dessert", title: "حلويات" },
-      { id: "snacks", title: "وجبات خفيفة" },
     ],
     items: [
       // قهوة ساخنة
@@ -54,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
         title: "موكا",
         desc: "لاتيه مع شوكولاتة",
         price: 40,
-        img: "https://images.unsplash.com/photo-1578374173705-0a5c2c1e8b72?w=400",
+        img: "https://tse3.mm.bing.net/th/id/OIP.qxQezJLNRAKTvikOqCoScgHaF1?rs=1&pid=ImgDetMain&o=7&rm=3",
       },
       {
         id: 1006,
@@ -122,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
         title: "شاي أخضر",
         desc: "شاي أخضر صحي",
         price: 18,
-        img: "https://images.unsplash.com/photo-1627435601361-ec25f5b1d0e5?w=400",
+        img: "https://tse3.mm.bing.net/th/id/OIP.fYVgzgPsRmSoQKaT43nY7AHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
       },
       {
         id: 3003,
@@ -172,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
         title: "عصير فراولة",
         desc: "عصير فراولة طازج",
         price: 35,
-        img: "https://images.unsplash.com/photo-1587049352846-4a222e784210?w=400",
+        img: "https://tse3.mm.bing.net/th/id/OIP.FOZnNuL-eQXsfedXV5mAdwHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
       },
       {
         id: 4004,
@@ -223,48 +222,6 @@ document.addEventListener("DOMContentLoaded", () => {
         desc: "كوكيز بالشوكولاتة",
         price: 25,
         img: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=400",
-      },
-
-      // وجبات خفيفة
-      {
-        id: 6001,
-        cat: "snacks",
-        title: "كرواسون",
-        desc: "كرواسون فرنسي طازج",
-        price: 20,
-        img: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400",
-      },
-      {
-        id: 6002,
-        cat: "snacks",
-        title: "ساندويتش تركي",
-        desc: "ساندويتش ديك رومي مع جبن",
-        price: 45,
-        img: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400",
-      },
-      {
-        id: 6003,
-        cat: "snacks",
-        title: "بان كيك",
-        desc: "بان كيك بالعسل",
-        price: 40,
-        img: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400",
-      },
-      {
-        id: 6004,
-        cat: "snacks",
-        title: "وافل",
-        desc: "وافل بالشوكولاتة",
-        price: 45,
-        img: "https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=400",
-      },
-      {
-        id: 6005,
-        cat: "snacks",
-        title: "مافن",
-        desc: "مافن بالتوت",
-        price: 30,
-        img: "https://images.unsplash.com/photo-1607958996333-41aef7caefaa?w=400",
       },
     ],
     hours: [
@@ -620,13 +577,13 @@ document.addEventListener("DOMContentLoaded", () => {
             <div style="background: #f5f5f5; padding: 15px; border-radius: 10px; margin: 15px 0;">
               <p style="font-weight: bold; color: #e74c3c; margin-bottom: 10px;">ملخص الطلب:</p>
               ${CART.map(
-                (item) => `
+          (item) => `
                 <div style="display: flex; justify-content: space-between; margin: 8px 0; padding: 8px; background: white; border-radius: 6px;">
                   <span>${item.qty}× ${item.title}</span>
                   <span style="color: #e74c3c; font-weight: bold;">${(item.qty * item.price).toFixed(0)} ج.م</span>
                 </div>
               `
-              ).join("")}
+        ).join("")}
               <hr style="margin: 10px 0;">
               <div style="display: flex; justify-content: space-between; font-size: 18px; font-weight: bold;">
                 <span>الإجمالي:</span>
@@ -697,9 +654,8 @@ document.addEventListener("DOMContentLoaded", () => {
     DATA.hours.forEach((h) => {
       const div = document.createElement("div");
       div.className = "hours-item " + (h.state === "مغلق" ? "closed" : h.times.includes("مفتوح") ? "openall" : "");
-      div.innerHTML = `<div>${h.day}</div><div style="text-align:left">${
-        h.state === "مغلق" ? '<strong style="color:var(--accent-2)">مغلق</strong>' : h.times
-      }</div>`;
+      div.innerHTML = `<div>${h.day}</div><div style="text-align:left">${h.state === "مغلق" ? '<strong style="color:var(--accent-2)">مغلق</strong>' : h.times
+        }</div>`;
       hoursList.appendChild(div);
     });
   }
