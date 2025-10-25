@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>كافيه الأصالة | Asala Cafe</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- خط عربي -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a2e0f1f6e7.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #F3E9DC;
+      color: #4B2E2E;
+    }
+
+    .hero-bg {
+      background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .order-btn {
+      background-color: #F3E9DC;
+      color: #4B2E2E;
+      font-weight: 600;
+      padding: 12px 32px;
+      border-radius: 9999px;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.5s ease;
+      box-shadow: 0 4px 10px rgba(75, 46, 46, 0.2);
+      letter-spacing: 0;
+      border: 2px solid transparent;
+    }
+
+    /* Hover effect (AFTER) */
+    .order-btn:hover {
+      background-color: #4B2E2E;
+      color: #F3E9DC;
+      letter-spacing: 3px;
+
+      box-shadow: 0 8px 20px rgba(75, 46, 46, 0.4);
+      border: 2px solid #4B2E2E;
+    }
+
+    .galary {
+      min-height: 500px;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .galary .container {
+      width: 100% !important;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+    }
+
+    .galary .container img {
+      width: 15em;
+      height: 25em;
+      border: 2px solid rgba(225, 225, 225, 0.5);
+      border-radius: 10px;
+      object-fit: cover;
+      transition: 0.5s ease-in-out;
+    }
+
+    .galary .container img:hover {
+      cursor: pointer;
+      width: 20em;
+    }
+
+    /* Responsive Styles for All Screens */
+
+    /* Large Desktop (1920px+) */
+    @media (min-width: 1920px) {
+      .hero-bg h1 {
+        font-size: 3.5rem !important;
+      }
+
+      .hero-bg h2 {
+        font-size: 1.5rem !important;
+      }
+
+      section {
+        padding: 5rem 2rem !important;
+      }
+
+      .galary .container img {
+        width: 18em;
+        height: 28em;
+      }
+    }
+
+    /* Desktop (1200px - 1919px) */
+    @media (min-width: 1200px) and (max-width: 1919px) {
+      .galary .container img {
+        width: 16em;
+        height: 26em;
+      }
+    }
+
+    /* Tablet Landscape (992px - 1199px) */
+    @media (min-width: 992px) and (max-width: 1199px) {
+      .hero-bg h1 {
+        font-size: 2.5rem !important;
+      }
+
+      .galary .container img {
+        width: 13em;
+        height: 20em;
+      }
+
+      section {
+        padding: 3rem 1.5rem !important;
+      }
+    }
+
+    /* Tablet Portrait (768px - 991px) */
+    @media (min-width: 768px) and (max-width: 991px) {
+      .hero-bg {
+        height: 100vh;
+      }
+
+      .hero-bg h1 {
+        font-size: 2.25rem !important;
+      }
+
+      .hero-bg h2 {
+        font-size: 1.1rem !important;
+      }
+
+      .hero-bg img {
+        width: 90px !important;
+        height: 90px !important;
+      }
+
+      .galary .container {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      .galary .container img {
+        width: 11em;
+        height: 17em;
+      }
+
+      section {
+        padding: 2.5rem 1.5rem !important;
+      }
+    }
+
+    /* Mobile Landscape & Small Tablet (576px - 767px) */
+    @media (min-width: 576px) and (max-width: 767px) {
+      .hero-bg {
+        height: 100vh;
+        background-position: center;
+      }
+
+      .hero-bg h1 {
+        font-size: 2rem !important;
+      }
+
+      .hero-bg h2 {
+        font-size: 1rem !important;
+      }
+
+      .hero-bg img {
+        width: 80px !important;
+        height: 80px !important;
+      }
+
+      .hero-bg a {
+        font-size: 1rem !important;
+        padding: 0.75rem 1.5rem !important;
+      }
+
+      .hero-bg .flex.gap-6 {
+        gap: 1.5rem !important;
+        font-size: 1.5rem !important;
+      }
+
+      section {
+        padding: 2rem 1rem !important;
+      }
+
+      section h2 {
+        font-size: 1.75rem !important;
+      }
+
+      section p {
+        font-size: 0.95rem !important;
+      }
+
+      .galary {
+        min-height: auto;
+        padding: 1rem;
+      }
+
+      .galary .container {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .galary .container img {
+        width: 9em;
+        height: 14em;
+      }
+
+      .galary .container img:hover {
+        width: 10em;
+      }
+
+      .order-btn {
+        padding: 10px 24px;
+        font-size: 0.9rem;
+      }
+
+      .order-btn:hover {
+        letter-spacing: 1px;
+      }
+
+      footer {
+        font-size: 0.75rem !important;
+        padding: 1rem !important;
+      }
+    }
+
+    /* Mobile Portrait (480px - 575px) */
+    @media (min-width: 480px) and (max-width: 575px) {
+      .hero-bg h1 {
+        font-size: 1.75rem !important;
+      }
+
+      .hero-bg h2 {
+        font-size: 0.95rem !important;
+      }
+
+      .hero-bg img {
+        width: 75px !important;
+        height: 75px !important;
+      }
+
+      .galary .container img {
+        width: 8.5em;
+        height: 13em;
+      }
+
+      .galary .container img:hover {
+        width: 9.5em;
+      }
+
+      section h2 {
+        font-size: 1.6rem !important;
+      }
+
+      .order-btn {
+        padding: 9px 22px;
+        font-size: 0.875rem;
+      }
+    }
+
+    /* Small Mobile (320px - 479px) */
+    @media (max-width: 479px) {
+      .hero-bg {
+        height: 100vh;
+        padding: 1rem;
+      }
+
+      .hero-bg h1 {
+        font-size: 1.5rem !important;
+        margin-bottom: 0.5rem !important;
+      }
+
+      .hero-bg h2 {
+        font-size: 0.875rem !important;
+        margin-bottom: 1.5rem !important;
+      }
+
+      .hero-bg img {
+        width: 70px !important;
+        height: 70px !important;
+        margin-bottom: 1rem !important;
+      }
+
+      .hero-bg a {
+        font-size: 0.875rem !important;
+        padding: 0.65rem 1.25rem !important;
+      }
+
+      .hero-bg .flex.gap-6 {
+        gap: 1.25rem !important;
+        font-size: 1.25rem !important;
+        margin-top: 1.5rem !important;
+      }
+
+      section {
+        padding: 1.5rem 0.75rem !important;
+      }
+
+      section h2 {
+        font-size: 1.4rem !important;
+      }
+
+      section p {
+        font-size: 0.875rem !important;
+        line-height: 1.6 !important;
+      }
+
+      .galary {
+        min-height: auto;
+        padding: 0.75rem;
+      }
+
+      .galary .container {
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        justify-content: center;
+      }
+
+      .galary .container img {
+        width: 7em;
+        height: 11em;
+      }
+
+      .galary .container img:hover {
+        width: 7.5em;
+      }
+
+      .order-btn {
+        padding: 8px 20px;
+        font-size: 0.8rem;
+      }
+
+      .order-btn:hover {
+        letter-spacing: 0.5px;
+      }
+
+      footer {
+        font-size: 0.7rem !important;
+        padding: 0.75rem !important;
+      }
+
+      .coffee-bean {
+        display: none !important;
+      }
+    }
+
+    /* Extra Small Mobile (max 320px) */
+    @media (max-width: 320px) {
+      .hero-bg h1 {
+        font-size: 1.25rem !important;
+      }
+
+      .hero-bg h2 {
+        font-size: 0.75rem !important;
+      }
+
+      .hero-bg img {
+        width: 60px !important;
+        height: 60px !important;
+      }
+
+      .galary .container img {
+        width: 6em;
+        height: 9em;
+      }
+
+      section h2 {
+        font-size: 1.25rem !important;
+      }
+
+      .order-btn {
+        padding: 7px 16px;
+        font-size: 0.75rem;
+      }
+    }
+  </style>
+</head>
+
+<body class="text-center">
+
+  <!-- 🔸 القسم الرئيسي -->
+  <section class="hero-bg relative h-screen flex flex-col justify-center items-center text-white">
+    <div class="overlay absolute inset-0"></div>
+
+    <div class="relative z-10 flex flex-col items-center">
+      <img src="https://i.pinimg.com/originals/39/3b/b1/393bb1bb15940aea508dd07c5da23917.jpg" alt="Asala Cafe Logo"
+        class="w-24 h-24 mb-4 rounded-full shadow-lg border-2 border-white" id="jumpImg">
+      <h1 class="text-4xl font-bold mb-2">كافيه الأصالة</h1>
+      <h2 class="text-lg mb-6 opacity-90" id="jumpText">قهوة مميزة ... أجواء رائعة ☕</h2>
+
+      <a href="menu.html" class="hero-menu-btn">
+        <span>عرض المنيو الإلكتروني 📋</span>
+      </a>
+
+
+
+      <div class="flex gap-6 mt-8 text-3xl">
+        <a href="https://wa.me/+201009105861" target="_blank" class="hover:text-green-400 transition"><i
+            class="fa-brands fa-whatsapp"></i></a>
+        <a href="tel:+201009105861" class="hover:text-yellow-300 transition"><i class="fa-solid fa-phone"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔸 من نحن -->
+  <section class="py-16 px-6" style="background-color: #F3E9DC;">
+    <h2 class="text-3xl font-bold mb-4" style="color: #4B2E2E;">من نحن</h2>
+    <p class="max-w-2xl mx-auto leading-relaxed" style="color: #4B2E2E;">
+      في <span class="font-semibold" style="color: #4B2E2E;">كافيه الأصالة</span> نقدم لك أفضل أنواع القهوة المحمصة
+      بعناية
+      مع مشروبات ساخنة وباردة مميزة، في أجواء هادئة ومريحة.
+      هدفنا أن نجعل كل كوب تجربة لا تُنسى!
+    </p>
+  </section>
+
+  <!-- 🔸 معرض الصور -->
+  <div class="galary">
+    <div class="container">
+      <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600" alt="قهوة" />
+      <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600" alt="كابتشينو" />
+      <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600" alt="لاتيه" />
+      <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=600" alt="أجواء الكافيه" />
+      <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600" alt="قهوة سوداء" />
+    </div>
+
+  </div>
+
+  <!-- 🔸 قسم الطلب الآن -->
+  <section class="relative py-16 overflow-hidden"
+    style="background: linear-gradient(135deg, #6B4423 0%, #4B2E2E 50%, #3A2F2A 100%); color: #F3E9DC;">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+      <div
+        style="background-image: url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1200'); background-size: cover; background-position: center; width: 100%; height: 100%;">
+      </div>
+    </div>
+
+    <!-- Floating Coffee Beans Animation -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="coffee-bean"
+        style="position: absolute; top: 10%; left: 10%; width: 30px; height: 30px; opacity: 0.2; animation: float 6s ease-in-out infinite;">
+        ☕</div>
+      <div class="coffee-bean"
+        style="position: absolute; top: 70%; right: 15%; width: 25px; height: 25px; opacity: 0.15; animation: float 8s ease-in-out infinite 1s;">
+        ☕</div>
+      <div class="coffee-bean"
+        style="position: absolute; bottom: 20%; left: 20%; width: 35px; height: 35px; opacity: 0.1; animation: float 7s ease-in-out infinite 2s;">
+        ☕</div>
+    </div>
+
+    <div class="max-w-3xl mx-auto relative z-10">
+      <h2 class="text-3xl font-bold mb-4">جاهز تطلب؟ ☕</h2>
+      <p class="mb-6 opacity-90">اطلب الآن واستمتع بأفضل قهوة في المدينة!</p>
+      <a href="menu.html" class="order-now-btn" id="o3der">
+        <span>أطلب الآن</span>
+        <svg width="34" height="34" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="37" cy="37" r="35.5" stroke="currentColor" stroke-width="3"></circle>
+          <path
+            d="M25 35.5C24.1716 35.5 23.5 36.1716 23.5 37C23.5 37.8284 24.1716 38.5 25 38.5V35.5ZM49.0607 38.0607C49.6464 37.4749 49.6464 36.5251 49.0607 35.9393L39.5147 26.3934C38.9289 25.8076 37.9792 25.8076 37.3934 26.3934C36.8076 26.9792 36.8076 27.9289 37.3934 28.5147L45.8787 37L37.3934 45.4853C36.8076 46.0711 36.8076 47.0208 37.3934 47.6066C37.9792 48.1924 38.9289 48.1924 39.5147 47.6066L49.0607 38.0607ZM25 38.5L48 38.5V35.5L25 35.5V38.5Z"
+            fill="currentColor"></path>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <style>
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-20px) rotate(180deg);
+      }
+    }
+
+    /* Cool Hero Menu Button */
+    .hero-menu-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 2.5rem;
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: #4B2E2E;
+      background: #F3E9DC;
+      border: 3px solid #4B2E2E;
+      border-radius: 50px;
+      text-decoration: none;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+      box-shadow: 0 10px 30px rgba(75, 46, 46, 0.3);
+    }
+
+    .hero-menu-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+      transition: left 0.6s;
+    }
+
+    .hero-menu-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: #4B2E2E;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+      z-index: -1;
+    }
+
+    .hero-menu-btn:hover {
+      color: #F3E9DC;
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(75, 46, 46, 0.5);
+    }
+
+    .hero-menu-btn:hover::before {
+      left: 100%;
+    }
+
+    .hero-menu-btn:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .hero-menu-btn:active {
+      transform: translateY(-2px);
+    }
+
+    /* Cool Order Now Button with Arrow */
+    .order-now-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 2rem;
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: #4B2E2E;
+      background: #F3E9DC;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+      box-shadow: 0 8px 25px rgba(243, 233, 220, 0.4);
+    }
+
+    .order-now-btn svg {
+      width: 34px;
+      height: 34px;
+      transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+
+    .order-now-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #F3E9DC 0%, #E8DED0 100%);
+      transform: translateX(-100%);
+      transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+      z-index: -1;
+    }
+
+    .order-now-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 12px 35px rgba(243, 233, 220, 0.6);
+    }
+
+    .order-now-btn:hover svg {
+      transform: translateX(5px);
+    }
+
+    .order-now-btn:hover::before {
+      transform: translateX(0);
+    }
+
+    .order-now-btn:active {
+      transform: translateY(-1px) scale(1.02);
+    }
+  </style>
+
+  <!-- 🔸 تواصل معنا -->
+  <section class="py-16 px-6" style="background-color: #F3E9DC;">
+    <h2 class="text-3xl font-bold mb-6" style="color: #4B2E2E;">تواصل معنا</h2>
+    <div class="max-w-xl mx-auto" style="color: #4B2E2E;">
+      <p class="mb-2">📍 العنوان: ###################</p>
+      <p class="mb-2">📞 الهاتف: <a href="tel:+2010000000061" class="hover:underline"
+          style="color: #4B2E2E;">+2010000000061</a>
+      </p>
+      <p class="mb-4">📱 واتساب: <a href="https://wa.me/+2010000000061" target="_blank" class="hover:underline"
+          style="color: #25d366;">+2010000000061</a></p>
+      <a href="#" class="inline-block px-6 py-2 rounded-full transition"
+        style="background-color: #4B2E2E; color: #F3E9DC;">عرض على
+        الخريطة</a>
+    </div>
+  </section>
+
+  <!-- 🔸 الفوتر -->
+  <footer class="text-sm py-4" style="background-color: #4B2E2E; color: #F3E9DC;"></footer>
+  © 2025 كافيه الأصالة | جميع الحقوق محفوظة ☕
+  </footer>
+
+  <script>
+    gsap.to("#jumpImg", {
+      y: -10,
+      duration: 0.6,
+      ease: "sine.inOut",
+      yoyo: true,
+      repeat: -1
+    });
+  </script>
+</body>
+
+</html>
