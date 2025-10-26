@@ -827,6 +827,12 @@ var swiper = new Swiper(".mySwiper", {
   slidesPerView: "auto",
   initialSlide: 4,
   loop: true,
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: true,
+  },
+  speed: 800,
   coverflowEffect: {
     rotate: 50,
     stretch: 0,
